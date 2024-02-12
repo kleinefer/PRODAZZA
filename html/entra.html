@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EvenPlanner</title>
+    <link rel="stylesheet" href="css/entra.css">
+    <link rel="stylesheet" href="../css/prototipo1.css">
+</head>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-image: url(../img/Fondogreen.jpeg);
+
+}
+
+h1, h2 {
+  color: #e4e4e4;
+}
+
+form {
+  background-color: #4b793f;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="date"],
+button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #a8d898;
+  color: #000;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #6f8c66;
+}
+
+#eventosContainer {
+  margin-top: 20px;
+}
+
+#eventosContainer > div {
+  background-color: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+</style>
+<body>
+   
+  <h1>Eventos Próximos</h1>
+
+  <!-- Contenedor para mostrar eventos -->
+  <div id="eventosContainer"></div>
+  
+  <!-- Formulario para agregar un nuevo evento -->
+  <h2>Agregar Nuevo Evento</h2>
+  <form id="nuevoEventoForm">
+      <label for="nombreEvento">Nombre del Evento:</label>
+      <input type="text" id="nombreEvento" required><br>
+      <label for="fechaEvento">Fecha del Evento:</label>
+      <input type="date" id="fechaEvento" required><br>
+      <button type="submit">Agregar Evento</button>
+  </form>
+  
+  <script>
+      // Código JavaScript
+      // Aquí puedes escribir tu código para manejar eventos
+  
+      // Datos de ejemplo para los eventos
+      var eventos = [
+          { nombre: "Conferencia de Tecnología", fecha: "2024-02-15" },
+          { nombre: "Taller de Diseño Gráfico", fecha: "2024-02-20" },
+          // Puedes añadir más eventos aquí
+      ];
+  
+      // Función para mostrar los eventos en la página
+      function mostrarEventos() {
+          var eventosContainer = document.getElementById('eventosContainer');
+          eventosContainer.innerHTML = ''; // Limpiamos el contenido actual
+  
+          eventos.forEach(function(evento) {
+              var eventoElement = document.createElement('div');
+              eventoElement.textContent = evento.nombre + ' - ' + evento.fecha;
+              eventosContainer.appendChild(eventoElement);
+          });
+      }
+  
+      // Mostrar eventos al cargar la página
+      mostrarEventos();
+  
+      // Manejar la presentación del nuevo evento
+      document.getElementById('nuevoEventoForm').addEventListener('submit', function(event) {
+          event.preventDefault(); // Evitar el envío del formulario por defecto
+  
+          // Obtener los valores del formulario
+          var nombreEvento = document.getElementById('nombreEvento').value;
+          var fechaEvento = document.getElementById('fechaEvento').value;
+  
+          // Añadir el nuevo evento a la lista de eventos
+          eventos.push({ nombre: nombreEvento, fecha: fechaEvento });
+  
+          // Mostrar de nuevo los eventos para reflejar los cambios
+          mostrarEventos();
+  
+          // Limpiar el formulario
+          document.getElementById('nuevoEventoForm').reset();
+      });
+  </script>
+   <footer>
+        
+    <div class="footer-content">
+        <p>Software de Eventos &copy; 2024. Todos los derechos reservados.</p>
+        <nav>
+            <ul>
+             
+                
+                <li><a href="html/conocenos.html">Acerca de nosotros</a></li>
+                <li>contacto</li>
+               <li> <ol><h3>Contactanos</h3>   
+                  <li>
+                  <a href="https://api.whatsapp.com/send?phone=+573125732952&text=hola%2C+me+gustaria+saber+mas+sobre+EvenPlanner">whatsaap</a>
+          </ol></li>
+            </ul>
+        </nav>
+    </div>
+     <p>Software creado por fernanda guerrero</p>
+</footer>
+</body>
+</html>
